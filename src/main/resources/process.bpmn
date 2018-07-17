@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.15.1">
+  <bpmn:process id="Formio-test" name="Formio-test" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>SequenceFlow_0n0v3gd</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0n0v3gd" sourceRef="StartEvent_1" targetRef="Task_010" />
+    <bpmn:userTask id="Task_010" name="010 Create form" camunda:formKey="app:forms/task-form.html">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="formio_options">
+            <camunda:map>
+              <camunda:entry key="json">request_npi.json</camunda:entry>
+              <camunda:entry key="save_submission">TEST</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0n0v3gd</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0iq8sqa</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0iq8sqa" sourceRef="Task_010" targetRef="Task_020" />
+    <bpmn:endEvent id="EndEvent_1eg3471">
+      <bpmn:incoming>SequenceFlow_0xz1ca9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Task_020" name="020 Review form" camunda:formKey="app:forms/task-form.html">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="formio_options">
+            <camunda:map>
+              <camunda:entry key="json">request_npi2.json</camunda:entry>
+              <camunda:entry key="load_submission">TEST</camunda:entry>
+              <camunda:entry key="save_submission">TEST</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+          <camunda:inputParameter name="formio_override">
+            <camunda:map>
+              <camunda:entry key="firstName">John</camunda:entry>
+              <camunda:entry key="lastName">Snow</camunda:entry>
+            </camunda:map>
+          </camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0iq8sqa</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xz1ca9</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0xz1ca9" sourceRef="Task_020" targetRef="EndEvent_1eg3471" />
+  </bpmn:process>
+  <bpmn:error id="Error_1kbi4nh" name="FailedToCreateInvoice" errorCode="FailedToCreateInvoice" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Formio-test">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="6" y="71" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="13" y="107" width="24" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0n0v3gd_di" bpmnElement="SequenceFlow_0n0v3gd">
+        <di:waypoint x="42" y="89" />
+        <di:waypoint x="134" y="89" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="15" y="67" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1tq6333_di" bpmnElement="Task_010">
+        <dc:Bounds x="134" y="49" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0iq8sqa_di" bpmnElement="SequenceFlow_0iq8sqa">
+        <di:waypoint x="234" y="89" />
+        <di:waypoint x="306" y="89" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="299.5" y="68" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1eg3471_di" bpmnElement="EndEvent_1eg3471">
+        <dc:Bounds x="526" y="71" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1842" y="111" width="90" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1yccoyr_di" bpmnElement="Task_020">
+        <dc:Bounds x="306" y="49" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xz1ca9_di" bpmnElement="SequenceFlow_0xz1ca9">
+        <di:waypoint x="406" y="89" />
+        <di:waypoint x="526" y="89" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="624" y="68" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
