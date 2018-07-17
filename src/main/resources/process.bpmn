@@ -15,6 +15,9 @@
             </camunda:map>
           </camunda:inputParameter>
         </camunda:inputOutput>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="groovy" resource="debug.groovy" />
+        </camunda:executionListener>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0n0v3gd</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0iq8sqa</bpmn:outgoing>
@@ -40,6 +43,9 @@
             </camunda:map>
           </camunda:inputParameter>
         </camunda:inputOutput>
+        <camunda:executionListener event="start">
+          <camunda:script scriptFormat="groovy" resource="debug.groovy" />
+        </camunda:executionListener>
       </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0iq8sqa</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0xz1ca9</bpmn:outgoing>
